@@ -11,7 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Polygon Creator</string>
+   <string>GoGo-PolygonCreator</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="resources.qrc">
+    <normaloff>:/images/icon.png</normaloff>:/images/icon.png</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">font: 20pt &quot;Roboto&quot;;
@@ -20,145 +24,6 @@ color: rgb(0,0,0);</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="2" column="1" colspan="5">
-     <widget class="QLineEdit" name="element">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="minimumSize">
-       <size>
-        <width>0</width>
-        <height>0</height>
-       </size>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(237, 236, 235);</string>
-      </property>
-      <property name="text">
-       <string>Elemento</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="0" colspan="6">
-     <widget class="QTableWidget" name="points">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">color: rgb(0, 0, 0);
-background-color: rgb(255, 255, 255);</string>
-      </property>
-      <property name="sizeAdjustPolicy">
-       <enum>QAbstractScrollArea::AdjustToContents</enum>
-      </property>
-      <column>
-       <property name="text">
-        <string>Elemento</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Ponto</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Latitude</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Longitude</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Altitude</string>
-       </property>
-      </column>
-     </widget>
-    </item>
-    <item row="4" column="3">
-     <widget class="QDoubleSpinBox" name="longitude">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(237, 236, 235);</string>
-      </property>
-      <property name="decimals">
-       <number>10</number>
-      </property>
-      <property name="minimum">
-       <double>-999999999999999939709166371603178586112.000000000000000</double>
-      </property>
-      <property name="maximum">
-       <double>999999999999999945575230987042816.000000000000000</double>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="0">
-     <widget class="QLabel" name="label_3">
-      <property name="text">
-       <string>Elemento:</string>
-      </property>
-     </widget>
-    </item>
-    <item row="4" column="0">
-     <widget class="QLabel" name="label_5">
-      <property name="text">
-       <string>Latitude:</string>
-      </property>
-     </widget>
-    </item>
-    <item row="4" column="2">
-     <widget class="QLabel" name="label_6">
-      <property name="text">
-       <string>Longitude:</string>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="0">
-     <widget class="QLabel" name="label_4">
-      <property name="text">
-       <string>Ponto:</string>
-      </property>
-     </widget>
-    </item>
-    <item row="4" column="5">
-     <widget class="QDoubleSpinBox" name="altitude">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="minimumSize">
-       <size>
-        <width>0</width>
-        <height>80</height>
-       </size>
-      </property>
-      <property name="decimals">
-       <number>10</number>
-      </property>
-      <property name="minimum">
-       <double>-999999999999999939709166371603178586112.000000000000000</double>
-      </property>
-      <property name="maximum">
-       <double>999999999999999945575230987042816.000000000000000</double>
-      </property>
-     </widget>
-    </item>
     <item row="0" column="0">
      <widget class="QLabel" name="label">
       <property name="maximumSize">
@@ -168,7 +33,7 @@ background-color: rgb(255, 255, 255);</string>
        </size>
       </property>
       <property name="text">
-       <string>Destino:</string>
+       <string>File Path:</string>
       </property>
      </widget>
     </item>
@@ -213,7 +78,7 @@ background-color: rgb(255, 255, 255);</string>
        <string notr="true">background-color: rgb(237, 236, 235);</string>
       </property>
       <property name="text">
-       <string>Ponto</string>
+       <string>My point</string>
       </property>
      </widget>
     </item>
@@ -238,7 +103,7 @@ border-radius: 8px;
 color: rgb(255,255,255);</string>
       </property>
       <property name="text">
-       <string>Adicionar coordenada</string>
+       <string>Add Point</string>
       </property>
      </widget>
     </item>
@@ -263,7 +128,17 @@ border-radius: 8px;
 color: rgb(255,255,255);</string>
       </property>
       <property name="text">
-       <string>Salvar coordenadas</string>
+       <string>Save</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1" colspan="3">
+     <widget class="QLineEdit" name="path">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
       </property>
      </widget>
     </item>
@@ -288,17 +163,7 @@ border-radius: 8px;
 color: rgb(255,255,255);</string>
       </property>
       <property name="text">
-       <string>Limpar coordenadas</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="1" colspan="3">
-     <widget class="QLineEdit" name="path">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
+       <string>Clear</string>
       </property>
      </widget>
     </item>
@@ -323,14 +188,155 @@ border-radius: 8px;
 color: rgb(255,255,255);</string>
       </property>
       <property name="text">
-       <string>Escolher destino</string>
+       <string>Choose File Path</string>
       </property>
+     </widget>
+    </item>
+    <item row="2" column="1" colspan="5">
+     <widget class="QLineEdit" name="element">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(237, 236, 235);</string>
+      </property>
+      <property name="text">
+       <string>My location</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="3">
+     <widget class="QDoubleSpinBox" name="longitude">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(237, 236, 235);</string>
+      </property>
+      <property name="decimals">
+       <number>10</number>
+      </property>
+      <property name="minimum">
+       <double>-999999999999999939709166371603178586112.000000000000000</double>
+      </property>
+      <property name="maximum">
+       <double>999999999999999945575230987042816.000000000000000</double>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="label_3">
+      <property name="text">
+       <string>Location:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="0">
+     <widget class="QLabel" name="label_5">
+      <property name="text">
+       <string>Latitude:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="2">
+     <widget class="QLabel" name="label_6">
+      <property name="text">
+       <string>Longitude:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QLabel" name="label_4">
+      <property name="text">
+       <string>Point:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="5">
+     <widget class="QDoubleSpinBox" name="altitude">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>80</height>
+       </size>
+      </property>
+      <property name="decimals">
+       <number>10</number>
+      </property>
+      <property name="minimum">
+       <double>-999999999999999939709166371603178586112.000000000000000</double>
+      </property>
+      <property name="maximum">
+       <double>999999999999999945575230987042816.000000000000000</double>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0" colspan="6">
+     <widget class="QTableWidget" name="points">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="sizeAdjustPolicy">
+       <enum>QAbstractScrollArea::AdjustToContents</enum>
+      </property>
+      <column>
+       <property name="text">
+        <string>Location</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Point</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Latitude</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Longitude</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Altitude</string>
+       </property>
+      </column>
      </widget>
     </item>
    </layout>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

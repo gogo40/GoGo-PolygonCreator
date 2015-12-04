@@ -72,6 +72,10 @@ void MainWindow::on_openDestinationButton_clicked()
     }
 
     ui->path->setText(path);
+
+    load(path);
+
+    ui->points->resizeColumnsToContents();
 }
 
 void MainWindow::on_addPointButton_clicked()
@@ -104,9 +108,79 @@ void MainWindow::on_addPointButton_clicked()
 void MainWindow::on_savePointsButton_clicked()
 {
     QString filename = ui->path->text();
+    bool ok = save(filename);
+
+    if (ok) {
+        QMessageBox::warning(0, "File saved",
+                             "Points saved in file '" + filename + "'");
+    } else {
+        QMessageBox::warning(0, "Error during file saving...",
+                             "Points can't be saved in file  '" + filename + "'");
+    }
+}
+
+void MainWindow::on_clearPointsButton_clicked()
+{
+    ui->points->setRowCount(0);
+}
+
+void MainWindow::update_position(double latitude, double longitude, double altitude)
+{
+    ui->latitude->setValue(latitude);
+    ui->longitude->setValue(longitude);
+    ui->altitude->setValue(altitude);
+}
+
+bool MainWindow::load(const QString &filename)
+{
+    QFile file(filename);
+
+    if (!file.open(QFile::ReadOnly)) {
+        return false;
+    }
+
+    int row = 0;
+
+    while (!file.atEnd()) {
+        QString line = file.readLine();
+        QStringList content = line.split(",");
+
+        if (content.size() >= 5) {
+            const QString& element = content.at(0);
+            const QString& point = content.at(1);
+
+            double lat = content.at(2).toDouble();
+            double lon = content.at(3).toDouble();
+            double alt = content.at(4).toDouble();
+
+            ui->points->setRowCount(row + 1);
+
+            for (int j = 0; j < 5; ++j) {
+                if (!ui->points->item(row, j)) {
+                    ui->points->setItem(row, j, new QTableWidgetItem(""));
+                }
+            }
+
+            ui->points->item(row, 0)->setText(element);
+            ui->points->item(row, 1)->setText(point);
+            ui->points->item(row, 2)->setText(QString::number(lat, 'g', 10));
+            ui->points->item(row, 3)->setText(QString::number(lon, 'g', 10));
+            ui->points->item(row, 4)->setText(QString::number(alt, 'g', 10));
+
+            ++row;
+        }
+    }
+
+    file.close();
+
+    return true;
+}
+
+bool MainWindow::save(const QString &filename)
+{
 
     FILE* f = fopen(filename.toLocal8Bit().data(), "w+");
-    if (!f) return;
+    if (!f) return false;
 
     QTextStream out(f);
 
@@ -122,20 +196,7 @@ void MainWindow::on_savePointsButton_clicked()
         }
         out << "\n";
     }
-
-    QMessageBox::warning(0, "Arquivo salvo", "Coordenadas salvas no arquivo: " + filename);
-}
-
-void MainWindow::on_clearPointsButton_clicked()
-{
-    ui->points->setRowCount(0);
-}
-
-void MainWindow::update_position(double latitude, double longitude, double altitude)
-{
-    ui->latitude->setValue(latitude);
-    ui->longitude->setValue(longitude);
-    ui->altitude->setValue(altitude);
+    return true;
 }
 
 void MainWindow::position_updated(QGeoPositionInfo p)

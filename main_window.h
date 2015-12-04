@@ -52,6 +52,9 @@ private slots:
 private:
     void update_position(double latitude, double longitude, double altitude);
 
+    bool load(const QString& filename);
+    bool save(const QString& filename);
+
     Ui::MainWindow *ui;
 
     QGeoPositionInfoSource* position_info_;
