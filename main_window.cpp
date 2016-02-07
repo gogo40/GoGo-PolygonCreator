@@ -179,10 +179,10 @@ bool MainWindow::load(const QString &filename)
 bool MainWindow::save(const QString &filename)
 {
 
-    FILE* f = fopen(filename.toLocal8Bit().data(), "w+");
-    if (!f) return false;
+    QFile f(filename);
+    if (!f.open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text)) return false;
 
-    QTextStream out(f);
+    QTextStream out(&f);
 
     int nc = ui->points->columnCount();
     int nr = ui->points->rowCount();
